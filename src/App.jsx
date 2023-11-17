@@ -1,10 +1,10 @@
-import "./App.css";
+import { Board } from "./components/Board";
 
 function App() {
   return (
-    <>
-      <h1>Kanban Board</h1>
-    </>
+    <main className="max-w-screen-xl mx-auto my-0 p-4">
+      <Board />
+    </main>
   );
 }
 
