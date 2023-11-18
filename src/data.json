@@ -1,0 +1,45 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Card 1",
+      "status": 1,
+      "createdAt": "2023-11-17",
+      "description": "Description for Card 1"
+    },
+    {
+      "id": 2,
+      "title": "Card 2",
+      "status": 2,
+      "createdAt": "2023-11-18",
+      "description": ""
+    },
+    {
+      "id": 3,
+      "title": "Card 3",
+      "status": 1,
+      "createdAt": "2023-11-19",
+      "description": "Description for Card 3"
+    },
+    {
+      "id": 4,
+      "title": "Untitled",
+      "status": 1,
+      "createdAt": "2023-11-20",
+      "description": "Description for Card 4"
+    },
+    {
+      "id": 5,
+      "title": "Card 5",
+      "status": 3,
+      "createdAt": "2023-11-21",
+      "description": "Description for Card 5"
+    }
+  ],
+  "statuses": [
+    { "id": 1, "name": "Not started", "color": "#f1f8c9" },
+    { "id": 2, "name": "In progress", "color": "#ffe3c2" },
+    { "id": 3, "name": "Completed", "color": "#dbcdc6" }
+  ],
+  "selectedTaskId": null
+}
