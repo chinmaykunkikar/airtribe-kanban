@@ -19,7 +19,6 @@ export default function DetailsPage({ taskId }) {
   }, [state, dispatch]);
 
   function handleTitleChange(event) {
-    console.log("Title Change:", event.target.value);
     dispatch({
       type: "UPDATE_TASK_TITLE",
       payload: { id: taskId, title: event.target.value },
@@ -28,7 +27,6 @@ export default function DetailsPage({ taskId }) {
 
   function handleStatusChange(event) {
     const newStatusId = parseInt(event.target.value);
-    console.log("Status Change:", newStatusId);
     dispatch({
       type: "UPDATE_TASK_STATUS",
       payload: { id: taskId, status: newStatusId },
@@ -36,13 +34,11 @@ export default function DetailsPage({ taskId }) {
   }
 
   function handleDeleteTask() {
-    console.log("Delete Task:", taskId);
     dispatch({ type: "DELETE_TASK", payload: taskId });
     dispatch({ type: "SET_SELECTED_TASK", payload: null });
   }
 
   function handleDescriptionChange(e) {
-    console.log("Description Change:", e.target.value);
     const newDescription = e.target.value;
     dispatch({
       type: "UPDATE_TASK_DESCRIPTION",
