@@ -3,11 +3,11 @@ import Board from "./components/Board";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import AppContext from "./contexts/AppContext";
-import data from "./data.json";
-import { reducer } from "./reducer";
+import initialData from "./data.json";
+import { kanbanReducer } from "./reducer";
 
 export default function App() {
-  const [state, dispatch] = useReducer(reducer, data);
+  const [state, dispatch] = useReducer(kanbanReducer, initialData);
 
   useEffect(() => {
     const storedState = localStorage.getItem("kanbanAppState");

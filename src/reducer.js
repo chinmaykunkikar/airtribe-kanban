@@ -1,7 +1,7 @@
 import { getCurrentDate } from "./utils";
 
 /* eslint-disable no-case-declarations */
-export function reducer(state, action) {
+export function kanbanReducer(state, action) {
   switch (action.type) {
     case "INITIALIZE_STATE":
       return action.payload;
