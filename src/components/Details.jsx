@@ -57,6 +57,8 @@ export default function DetailsPage({ taskId }) {
       <div className="flex items-baseline">
         <input
           type="text"
+          name="title"
+          id="title"
           value={task.title}
           onChange={handleTitleChange}
           className="mb-6 w-max text-3xl font-bold text-neutral-800 focus:outline-none"
@@ -64,22 +66,29 @@ export default function DetailsPage({ taskId }) {
           placeholder="Untitled"
           autoFocus
         />
-        <span className="cursor-default text-neutral-400">{task.id}</span>
+        <span
+          title="Task ID (for debugging purposes)"
+          className="cursor-default font-mono text-neutral-300"
+        >
+          &#123;{task.id}&#125;
+        </span>
       </div>
       <div className="flex flex-col gap-y-4 text-sm">
-        <p className="flex cursor-default items-center gap-x-4">
+        <div className="flex cursor-default items-center gap-x-4">
           <div className="flex items-center gap-x-2">
             <ClockIcon className="h-6 w-6 stroke-neutral-400" />
             <p className="text-neutral-400">Created</p>
           </div>
           <p className="text-neutral-700">{task.createdAt}</p>
-        </p>
+        </div>
         <div className="flex cursor-default items-center gap-x-6">
           <div className="flex items-center gap-x-2">
             <ArrowDownCircleIcon className="h-6 w-6 stroke-neutral-400" />
             <p className="text-neutral-400">Status</p>
           </div>
           <select
+            id="status"
+            name="status"
             value={task.status}
             onChange={handleStatusChange}
             className="rounded p-1 outline-none hover:cursor-pointer"
@@ -107,6 +116,8 @@ export default function DetailsPage({ taskId }) {
       </div>
       <div className="my-2 border"></div>
       <textarea
+        name="description"
+        id="description"
         value={task.description}
         onChange={handleDescriptionChange}
         className="h-40 w-full resize-y border-none border-gray-300 outline-none"
