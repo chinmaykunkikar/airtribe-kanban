@@ -35,7 +35,6 @@ export function kanbanReducer(state, action) {
 
     case "CREATE_TASK_TITLE":
       const { taskIdToCreate, newTitle } = action.payload;
-      console.log(taskIdToCreate, newTitle);
       return {
         ...state,
         tasks: state.tasks.map((task) =>
@@ -84,7 +83,6 @@ export function kanbanReducer(state, action) {
       const updatedTasks = state.tasks.map((task) =>
         task.id === taskId ? { ...task, status: targetStatus } : task,
       );
-      console.log({ updatedTasks, taskId, targetStatus });
       return {
         ...state,
         tasks: updatedTasks,
