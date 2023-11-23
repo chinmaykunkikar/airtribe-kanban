@@ -40,7 +40,7 @@ export default function Board() {
   }
 
   return (
-    <div className="flex items-start">
+    <div className="flex items-start gap-x-2">
       {selectedTaskId ? (
         <DetailsPage taskId={selectedTaskId} />
       ) : (
