@@ -1,11 +1,12 @@
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AppContext from "../contexts/AppContext";
 import DetailsPage from "./Details";
 import Status from "./Status";
 
 export default function Board() {
   const { state, dispatch } = useContext(AppContext);
+  const [droppable, setDroppable] = useState(false);
 
   const selectedTaskId = state.selectedTaskId;
 
@@ -36,14 +37,18 @@ export default function Board() {
         <DetailsPage taskId={selectedTaskId} />
       ) : (
         <>
-          {state.statuses.map((status) => (
-            <Status
-              key={status.id}
-              id={status.id}
-              name={status.name}
-              color={status.color}
-            />
-          ))}
+          <div className="flex overflow-x-auto">
+            {state.statuses.map((status) => (
+              <Status
+                key={status.id}
+                id={status.id}
+                name={status.name}
+                color={status.color}
+                droppable={droppable}
+                setDroppable={setDroppable}
+              />
+            ))}
+          </div>
           <button
             className="rounded px-2 text-neutral-400 hover:bg-neutral-100"
             title="Add a new status"

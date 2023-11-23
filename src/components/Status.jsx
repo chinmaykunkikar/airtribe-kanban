@@ -1,10 +1,11 @@
 import { EllipsisHorizontalIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import AppContext from "../contexts/AppContext";
 import Card from "./Card";
 
-export default function Status({ id, name, color }) {
+export default function Status({ id, name, color, droppable, setDroppable }) {
   const { state, dispatch } = useContext(AppContext);
+  const [draggedOver, setDraggedOver] = useState(false);
 
   useEffect(() => {
     dispatch({ type: "SAVE_STATE" });
@@ -14,7 +15,6 @@ export default function Status({ id, name, color }) {
     const existingNewTask = state.tasks.find(
       (task) => task.status === id && task.title === "",
     );
-    console.log(state.tasks);
     if (!existingNewTask) {
       dispatch({
         type: "ADD_TASK",
@@ -31,6 +31,7 @@ export default function Status({ id, name, color }) {
   }
 
   function handleDragStart(e, task) {
+    setDroppable(true);
     e.dataTransfer.setData(
       "text/plain",
       JSON.stringify({ taskId: task.id, status: task.status }),
@@ -39,6 +40,7 @@ export default function Status({ id, name, color }) {
 
   function handleDragOver(e) {
     e.preventDefault();
+    setDraggedOver(true);
   }
 
   function handleDrop(e, targetStatus) {
@@ -48,10 +50,22 @@ export default function Status({ id, name, color }) {
       type: "MOVE_TASK",
       payload: { taskId, targetStatus },
     });
+    setDraggedOver(false);
+    setDroppable(false);
   }
 
   return (
-    <div className="flex-1 p-3">
+    <div
+      className={`m-1 min-h-[32rem] min-w-[18rem] rounded-lg p-3 ${
+        droppable && !draggedOver && "bg-neutral-50"
+      }`}
+      onDrop={(e) => handleDrop(e, id)}
+      onDragOver={handleDragOver}
+      onDragLeave={() => setDraggedOver(false)}
+      style={{
+        backgroundColor: draggedOver ? color : "",
+      }}
+    >
       <div className="mb-2 flex items-center justify-between p-1">
         <div className="flex items-baseline gap-x-3">
           <h2
@@ -97,7 +111,6 @@ export default function Status({ id, name, color }) {
               task={task}
               onDragStart={handleDragStart}
               onDragOver={handleDragOver}
-              onDrop={handleDrop}
               onClick={(taskId) =>
                 dispatch({ type: "SET_SELECTED_TASK", payload: taskId })
               }
@@ -125,7 +138,7 @@ export default function Status({ id, name, color }) {
       <button
         onClick={handleNewTask}
         title="Add new task"
-        className="flex w-full items-center gap-x-1 rounded p-1 text-neutral-400 hover:bg-neutral-100"
+        className="flex w-full select-none items-center gap-x-1 rounded p-1 text-neutral-400 hover:bg-neutral-100"
       >
         <PlusIcon className="h-4 w-4 stroke-2" /> New
       </button>

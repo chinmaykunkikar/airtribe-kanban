@@ -6,8 +6,6 @@ export default function Card({
   title,
   task,
   onDragStart,
-  onDragOver,
-  onDrop,
   onClick,
   isNew,
   onSave,
@@ -23,8 +21,6 @@ export default function Card({
     <div
       draggable={!isNew}
       onDragStart={(e) => onDragStart(e, task)}
-      onDragOver={(e) => onDragOver(e)}
-      onDrop={(e) => onDrop(e, task.status)}
       onClick={() => onClick && onClick(id)}
       className="group relative mb-2 rounded border border-neutral-300 bg-white p-3 shadow hover:cursor-pointer hover:bg-neutral-100"
     >
