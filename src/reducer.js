@@ -94,6 +94,15 @@ export function kanbanReducer(state, action) {
         selectedTaskId: action.payload,
       };
 
+    case "DELETE_STATUS":
+      return {
+        ...state,
+        tasks: state.tasks.filter((task) => task.id !== action.payload.status),
+        statuses: state.statuses.filter(
+          (status) => status.id !== action.payload.id,
+        ),
+      };
+
     default:
       return state;
   }

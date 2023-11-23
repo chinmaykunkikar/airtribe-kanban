@@ -1,7 +1,13 @@
-import { EllipsisHorizontalIcon, PlusIcon } from "@heroicons/react/24/outline";
+import {
+  EllipsisHorizontalIcon,
+  PlusIcon,
+  TrashIcon,
+} from "@heroicons/react/24/outline";
 import { useContext, useEffect, useState } from "react";
 import AppContext from "../contexts/AppContext";
 import Card from "./Card";
+import { Popover, PopoverContent } from "@/components/ui/popover";
+import { PopoverTrigger } from "@radix-ui/react-popover";
 
 export default function Status({ id, name, color, droppable, setDroppable }) {
   const { state, dispatch } = useContext(AppContext);
@@ -54,9 +60,20 @@ export default function Status({ id, name, color, droppable, setDroppable }) {
     setDroppable(false);
   }
 
+  function handleStatusDelete(e) {
+    e.preventDefault();
+
+    dispatch({
+      type: "DELETE_STATUS",
+      payload: { id },
+    });
+
+    console.log(state, id);
+  }
+
   return (
     <div
-      className={`m-1 min-h-[32rem] min-w-[18rem] rounded-lg p-3 ${
+      className={`m-1 min-h-[32rem] min-w-[12rem] rounded-lg p-3 md:min-w-[18rem] ${
         droppable && !draggedOver && "bg-neutral-50"
       }`}
       onDrop={(e) => handleDrop(e, id)}
@@ -85,12 +102,23 @@ export default function Status({ id, name, color, droppable, setDroppable }) {
           </p>
         </div>
         <div className="flex items-center justify-between text-xl">
-          <button
-            className="rounded p-1 text-neutral-400 hover:bg-neutral-100"
-            title="Dummy menu button"
-          >
-            <EllipsisHorizontalIcon className="h-5 w-5 stroke-2" />
-          </button>
+          <Popover>
+            <PopoverTrigger
+              className="rounded p-1 text-neutral-400 hover:bg-neutral-100"
+              title="Menu"
+            >
+              <EllipsisHorizontalIcon className="h-5 w-5 stroke-2" />
+            </PopoverTrigger>
+            <PopoverContent className="w-40 p-0">
+              <button
+                onClick={handleStatusDelete}
+                className="flex w-full items-center justify-center gap-x-2 p-4 text-sm text-red-500 hover:bg-red-50"
+              >
+                <TrashIcon className="h-4 w-4 stroke-2" />
+                <p>Delete status</p>
+              </button>
+            </PopoverContent>
+          </Popover>
           <button
             onClick={handleNewTask}
             title="Add new task"
