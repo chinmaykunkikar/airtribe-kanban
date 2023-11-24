@@ -22,14 +22,14 @@ export default function Card({
       draggable={!isNew}
       onDragStart={(e) => onDragStart(e, task)}
       onClick={() => onClick && onClick(id)}
-      className="group relative mb-2 rounded border border-neutral-300 bg-white p-3 shadow hover:cursor-pointer hover:bg-neutral-100"
+      className="group relative mb-2 rounded border border-neutral-300 bg-white p-3 shadow transition duration-300 ease-in-out hover:cursor-pointer hover:bg-neutral-100"
     >
       {isNew ? (
         <div className="flex items-center">
           <input
             autoFocus
             type="text"
-            placeholder="Type a name..."
+            placeholder="Type a name&hellip;"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
             className="w-full p-1 text-sm focus:outline-none group-hover:bg-neutral-100"

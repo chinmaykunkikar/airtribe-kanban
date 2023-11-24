@@ -50,7 +50,7 @@ export default function Board() {
           <Popover modal open={closePop}>
             <PopoverTrigger
               onClick={() => setClosePop(true)}
-              className="mt-4 rounded p-2 text-neutral-400 hover:bg-neutral-100"
+              className="mt-4 rounded p-2 text-neutral-400 transition duration-300 ease-in-out hover:bg-neutral-100"
               title="Add a new status"
             >
               <PlusIcon className="h-6 w-6 stroke-2" />
@@ -74,7 +74,7 @@ export default function Board() {
                   setClosePop(false);
                 }}
                 title="Add status"
-                className="rounded border bg-white shadow-md hover:bg-neutral-200 disabled:bg-neutral-200"
+                className="rounded border bg-white shadow-md transition duration-300 ease-in-out hover:bg-neutral-200 disabled:bg-neutral-200"
               >
                 <CheckIcon className="h-6 w-6 stroke-neutral-400 stroke-2" />
               </button>

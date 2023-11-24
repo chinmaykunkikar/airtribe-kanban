@@ -67,8 +67,6 @@ export default function Status({ id, name, color, droppable, setDroppable }) {
       type: "DELETE_STATUS",
       payload: { id },
     });
-
-    console.log(state, id);
   }
 
   return (
@@ -104,7 +102,7 @@ export default function Status({ id, name, color, droppable, setDroppable }) {
         <div className="flex items-center justify-between text-xl">
           <Popover>
             <PopoverTrigger
-              className="rounded p-1 text-neutral-400 hover:bg-neutral-100"
+              className="rounded p-1 text-neutral-400 transition duration-300 ease-in-out hover:bg-neutral-100"
               title="Menu"
             >
               <EllipsisHorizontalIcon className="h-5 w-5 stroke-2" />
@@ -112,7 +110,7 @@ export default function Status({ id, name, color, droppable, setDroppable }) {
             <PopoverContent className="w-40 p-0">
               <button
                 onClick={handleStatusDelete}
-                className="flex w-full items-center justify-center gap-x-2 p-4 text-sm text-red-500 hover:bg-red-50"
+                className="flex w-full items-center justify-center gap-x-2 p-4 text-sm text-red-500 transition duration-300 ease-in-out hover:bg-red-50"
               >
                 <TrashIcon className="h-4 w-4 stroke-2" />
                 <p>Delete status</p>
@@ -122,7 +120,7 @@ export default function Status({ id, name, color, droppable, setDroppable }) {
           <button
             onClick={handleNewTask}
             title="Add new task"
-            className="rounded p-1 text-neutral-400 hover:bg-neutral-100"
+            className="rounded p-1 text-neutral-400 transition duration-300 ease-in-out hover:bg-neutral-100"
           >
             <PlusIcon className="h-5 w-5 stroke-2" />
           </button>
@@ -166,7 +164,7 @@ export default function Status({ id, name, color, droppable, setDroppable }) {
       <button
         onClick={handleNewTask}
         title="Add new task"
-        className="flex w-full select-none items-center gap-x-1 rounded p-1 text-neutral-400 hover:bg-neutral-100"
+        className="flex w-full select-none items-center gap-x-1 rounded p-1 text-neutral-400 transition duration-300 ease-in-out hover:bg-neutral-100"
       >
         <PlusIcon className="h-4 w-4 stroke-2" /> New
       </button>
