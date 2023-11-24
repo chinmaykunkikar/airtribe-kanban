@@ -9,6 +9,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { CheckIcon } from "lucide-react";
+import { twColors } from "@/utils";
 
 export default function Board() {
   const { state, dispatch } = useContext(AppContext);
@@ -18,23 +19,12 @@ export default function Board() {
 
   const selectedTaskId = state.selectedTaskId;
 
-  const colors = [
-    "#CDB4DB",
-    "#FFC8DD",
-    "#C0FDFF",
-    "#DFFFD6",
-    "#EBD2B4",
-    "#F4989C",
-    "#E9EDC9",
-    "#E0E1DD",
-  ];
-
   function addNewStatus(statusName) {
     dispatch({
       type: "ADD_STATUS",
       payload: {
         name: statusName,
-        color: colors[Math.floor(Math.random() * colors.length)],
+        color: twColors[Math.floor(Math.random() * twColors.length)],
       },
     });
   }
