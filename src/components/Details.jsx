@@ -67,7 +67,7 @@ export default function DetailsPage({ taskId }) {
           autoFocus
         />
         <span
-          title="Task ID (for debugging purposes)"
+          title={`task id: ${task.id}`}
           className="cursor-default font-mono text-neutral-300"
         >
           &#123;{task.id}&#125;

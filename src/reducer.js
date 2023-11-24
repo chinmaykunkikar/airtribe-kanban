@@ -1,4 +1,5 @@
 import { getCurrentDate } from "./utils";
+import { nanoid } from "nanoid";
 
 /* eslint-disable no-case-declarations */
 export function kanbanReducer(state, action) {
@@ -17,7 +18,7 @@ export function kanbanReducer(state, action) {
           ...state.tasks,
           {
             ...action.payload,
-            id: state.tasks.length + 1,
+            id: nanoid(4),
             createdAt: getCurrentDate(),
           },
         ],
