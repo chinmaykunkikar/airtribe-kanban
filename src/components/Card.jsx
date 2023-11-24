@@ -47,8 +47,8 @@ export default function Card({
         <p
           className={
             title === "Untitled"
-              ? "font-normal text-neutral-500"
-              : `font-semibold`
+              ? "text-xs font-normal text-neutral-500 md:text-sm"
+              : `text-xs font-semibold md:text-sm`
           }
         >
           {title}

@@ -50,19 +50,19 @@ export default function Board() {
           <Popover modal open={closePop}>
             <PopoverTrigger
               onClick={() => setClosePop(true)}
-              className="mt-4 rounded p-2 text-neutral-400 transition duration-300 ease-in-out hover:bg-neutral-100"
+              className="mt-4 rounded p-1 text-neutral-400 transition duration-300 ease-in-out hover:bg-neutral-100 md:p-2"
               title="Add a new status"
             >
-              <PlusIcon className="h-6 w-6 stroke-2" />
+              <PlusIcon className="h-4 w-4 stroke-2 md:h-6 md:w-6" />
             </PopoverTrigger>
-            <PopoverContent className="flex max-w-[16rem] shadow-xl">
+            <PopoverContent className="flex max-w-[10rem] p-2 shadow-xl md:max-w-[16rem]">
               <input
                 autoFocus
                 type="text"
                 name="new-status"
                 id="new-status"
                 placeholder="New status"
-                className="w-full focus:outline-none"
+                className="w-full text-sm focus:outline-none md:text-base"
                 value={statusName}
                 onChange={(e) => setStatusName(e.target.value)}
               />
@@ -74,7 +74,7 @@ export default function Board() {
                   setClosePop(false);
                 }}
                 title="Add status"
-                className="rounded border bg-white shadow-md transition duration-300 ease-in-out hover:bg-neutral-200 disabled:bg-neutral-200"
+                className="rounded border  bg-white shadow-md transition duration-300 ease-in-out hover:bg-neutral-200 disabled:bg-neutral-200"
               >
                 <CheckIcon className="h-6 w-6 stroke-neutral-400 stroke-2" />
               </button>

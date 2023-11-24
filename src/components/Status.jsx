@@ -71,7 +71,7 @@ export default function Status({ id, name, color, droppable, setDroppable }) {
 
   return (
     <div
-      className={`m-1 min-h-[32rem] min-w-[12rem] rounded-lg p-3 md:min-w-[18rem] ${
+      className={`m-1 min-h-[24rem] min-w-[12rem] rounded-lg p-3 md:min-h-[32rem] md:min-w-[18rem] ${
         droppable && !draggedOver && "bg-neutral-50"
       }`}
       onDrop={(e) => handleDrop(e, id)}
@@ -84,7 +84,7 @@ export default function Status({ id, name, color, droppable, setDroppable }) {
       <div className="mb-2 flex items-center justify-between p-1">
         <div className="flex items-baseline gap-x-3">
           <h2
-            className="rounded px-2 text-sm text-neutral-800 hover:cursor-default"
+            className="rounded px-2 text-xs text-neutral-800 hover:cursor-default md:text-sm"
             title="Status"
             style={{
               backgroundColor: color,
@@ -93,7 +93,7 @@ export default function Status({ id, name, color, droppable, setDroppable }) {
             {name}
           </h2>
           <p
-            className="font-semibold text-neutral-400 hover:cursor-default"
+            className="text-xs font-semibold text-neutral-400 hover:cursor-default md:text-base"
             title="Count"
           >
             {state.tasks.filter((task) => task.status === id).length}
@@ -105,12 +105,12 @@ export default function Status({ id, name, color, droppable, setDroppable }) {
               className="rounded p-1 text-neutral-400 transition duration-300 ease-in-out hover:bg-neutral-100"
               title="Menu"
             >
-              <EllipsisHorizontalIcon className="h-5 w-5 stroke-2" />
+              <EllipsisHorizontalIcon className="h-3 w-3 stroke-2 md:h-5 md:w-5" />
             </PopoverTrigger>
-            <PopoverContent className="w-40 p-0">
+            <PopoverContent className="w-28 p-0 md:w-40">
               <button
                 onClick={handleStatusDelete}
-                className="flex w-full items-center justify-center gap-x-2 p-4 text-sm text-red-500 transition duration-300 ease-in-out hover:bg-red-50"
+                className="flex w-full items-center justify-center gap-x-2 p-2 text-xs text-red-500 transition duration-300 ease-in-out hover:bg-red-50 md:p-4 md:text-sm"
               >
                 <TrashIcon className="h-4 w-4 stroke-2" />
                 <p>Delete status</p>
@@ -122,7 +122,7 @@ export default function Status({ id, name, color, droppable, setDroppable }) {
             title="Add new task"
             className="rounded p-1 text-neutral-400 transition duration-300 ease-in-out hover:bg-neutral-100"
           >
-            <PlusIcon className="h-5 w-5 stroke-2" />
+            <PlusIcon className="h-3 w-3 stroke-2 md:h-5 md:w-5" />
           </button>
         </div>
       </div>
@@ -166,7 +166,8 @@ export default function Status({ id, name, color, droppable, setDroppable }) {
         title="Add new task"
         className="flex w-full select-none items-center gap-x-1 rounded p-1 text-neutral-400 transition duration-300 ease-in-out hover:bg-neutral-100"
       >
-        <PlusIcon className="h-4 w-4 stroke-2" /> New
+        <PlusIcon className="h-3 w-3 stroke-2 md:h-4 md:w-4" />{" "}
+        <p className="text-xs md:text-base">New</p>
       </button>
     </div>
   );
