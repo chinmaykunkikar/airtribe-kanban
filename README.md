@@ -4,6 +4,8 @@
 
 Implement a project board or a kanban board like Notion.
 
+![Screenshot](/public/og_image.png "Kanban Board Screenshot")
+
 **Features:**
 
 - I can drag and drop tasks/cards from one status to another.
